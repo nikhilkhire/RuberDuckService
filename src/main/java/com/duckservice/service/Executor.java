@@ -16,12 +16,20 @@ public class Executor{
     @Scheduled(fixedDelay = 50000)
     public void runTask() throws InterruptedException{
         System.out.println("----------------------------------------");
-        final Order order = this.priorityBlockingQueue.take();
-        // this.priorityBlockingQueue.stream().forEach(System.out::println);
-        System.out.println("Customer Id : " + order.getCustomer().getId());
-        System.out.println("Order Id : " + order.getId());
-        System.out.println("Quantity : " + order.getQuantity());
-        System.out.println("Priority : " + order.getCustomer().isPremium());
+        int quantity = 0;
+        for(int i = 0; i < this.priorityBlockingQueue.size(); i++){
+
+            final Order order = this.priorityBlockingQueue.peek();
+            quantity += order.getQuantity();
+            if(quantity < 25){
+                this.priorityBlockingQueue.poll();
+                System.out.println(order.toString());
+            }else{
+                break;
+            }
+
+        }
+
     }
 
 }

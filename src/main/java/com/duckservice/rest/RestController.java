@@ -41,6 +41,12 @@ public class RestController{
         return "You said' " + name + "'";
     }
 
+    /**
+     * Add new order in queue
+     * 
+     * @param jsonRequest
+     * @return StandardJsonResponse
+     */
     @PostMapping("/addOrder")
     public StandardJsonResponse addOrder(@RequestBody final StandardRequestBody jsonRequest){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();
@@ -63,6 +69,12 @@ public class RestController{
         return jsonResponse;
     }
 
+    /**
+     * Get position of order and waiting time by providing order id in request
+     * 
+     * @param jsonRequest
+     * @return StandardJsonResponse
+     */
     @GetMapping("/orderDetails")
     public StandardJsonResponse getQueuePositionAndWaitTime(@RequestBody final StandardRequestBody jsonRequest){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();
@@ -85,6 +97,12 @@ public class RestController{
         return jsonResponse;
     }
 
+    /**
+     * 
+     * Get details of all orders present in queue
+     * 
+     * @return StandardJsonResponse
+     */
     @GetMapping("/allOrdersDetails")
     public StandardJsonResponse getAllOrdersAndWaitTime(){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();
@@ -102,6 +120,12 @@ public class RestController{
         return jsonResponse;
     }
 
+    /**
+     * Get next order
+     * 
+     * @param jsonRequest
+     * @return StandardJsonResponse
+     */
     @GetMapping("/nextOrder")
     public StandardJsonResponse nextDelivery(@RequestBody final StandardRequestBody jsonRequest){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();
@@ -121,6 +145,12 @@ public class RestController{
         return jsonResponse;
     }
 
+    /**
+     * Deletes the order for given customer id
+     * 
+     * @param jsonRequest
+     * @return
+     */
     @DeleteMapping("/remove")
     public StandardJsonResponse deleteOrder(@RequestBody final StandardRequestBody jsonRequest){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();

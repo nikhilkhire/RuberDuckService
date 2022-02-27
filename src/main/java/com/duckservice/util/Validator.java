@@ -23,7 +23,7 @@ public class Validator{
             final HashMap<String, Object> responseData){
 
         if(Validator.validateRequest(jsonRequest, responseData)){
-            if(!(jsonRequest.getQuantity() > 0)){
+            if(!(jsonRequest.getQuantity() > 0 && jsonRequest.getQuantity() < 25)){
                 responseData.put("Quantity", "Invalid");
                 return false;
             }
