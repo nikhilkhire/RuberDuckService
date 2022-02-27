@@ -2,9 +2,11 @@ package com.duckservice.entities;
 
 public class StandardRequestBody{
 
-    private int customerId;
+    private int  customerId;
 
-    private int quantity;
+    private int  quantity;
+
+    private Long orderId;
 
     public int getCustomerId(){
         return this.customerId;
@@ -20,5 +22,13 @@ public class StandardRequestBody{
 
     public void setQuantity(final int quantity){
         this.quantity = quantity;
+    }
+
+    public Long getOrderId(){
+        return this.orderId;
+    }
+
+    public void setOrderId(final Long orderId){
+        this.orderId = orderId;
     }
 }

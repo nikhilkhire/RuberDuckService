@@ -5,45 +5,46 @@ import java.io.Serializable;
 public class Order implements Comparable<Order>, Serializable{
     private static final long serialVersionUID = -773059248164293315L;
     private Long              id;
-    private int               _quantity;
+    private Integer           quantity;
     private Customer          customer;
-    private int               maxWaitingTime;
-    private int               arrivalTime;
+    private Integer           maxWaitingTime;
+    private Long              arrivalTime;
 
     public Order(){
 
     }
 
-    public Order(final int quantity, final Customer customer, final long orderId){
+    public Order(final Integer quantity, final Customer customer, final Long orderId){
         this.id = orderId;
-        this._quantity = quantity;
+        this.quantity = quantity;
         this.customer = customer;
+        this.arrivalTime = System.currentTimeMillis();
     }
 
     public Long getId(){
         return this.id;
     }
 
-    public int getQuantity(){
-        return this._quantity;
+    public Integer getQuantity(){
+        return this.quantity;
     }
 
     public Customer getCustomer(){
         return this.customer;
     }
 
-    public int getMaxWaitingTime(){
+    public Integer getMaxWaitingTime(){
         return this.maxWaitingTime;
     }
 
-    public void setMaxWaitingTime(final int maxWaitingTime){
+    public void setMaxWaitingTime(final Integer maxWaitingTime){
         this.maxWaitingTime = maxWaitingTime;
     }
 
     @Override
     public String toString(){
-        return "Order{Order Id= " + this.getId() + ", quantity=" + this._quantity + ", Customer Number="
-                + this.getCustomer().getId() + '}';
+        return "Order{Order Id= " + this.getId() + ", quantity=" + this.quantity + ", Customer Number="
+                + this.getCustomer().getId() + ", Wait Time=" + this.maxWaitingTime + '}';
     }
 
     @Override
