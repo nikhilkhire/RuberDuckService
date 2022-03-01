@@ -17,7 +17,7 @@ import org.springframework.util.ResourceUtils;
 import com.duckservice.entities.Order;
 
 @EnableScheduling
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.duckservice.*"})
 public class RuberDuckService{
 
     public static void main(final String[] args){

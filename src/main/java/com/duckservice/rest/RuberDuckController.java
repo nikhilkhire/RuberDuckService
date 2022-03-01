@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.duckservice.entities.Order;
 import com.duckservice.entities.StandardRequestBody;
@@ -23,9 +24,8 @@ import com.duckservice.util.StandardJsonResponse;
 import com.duckservice.util.StandardJsonResponseImpl;
 import com.duckservice.util.Validator;
 
-@org.springframework.web.bind.annotation.RestController
-@RequestMapping("/duckService")
-public class RestController{
+@RestController
+public class RuberDuckController{
     @Autowired
     private RPriorityBlockingQueue<Order> priorityBlockingQueue;
 
@@ -47,7 +47,7 @@ public class RestController{
      * @param jsonRequest
      * @return StandardJsonResponse
      */
-    @PostMapping("/addOrder")
+    @PostMapping("/duckService/addOrder")
     public StandardJsonResponse addOrder(@RequestBody final StandardRequestBody jsonRequest){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();
         final HashMap<String, Object> responseData = new HashMap<>();
@@ -75,7 +75,7 @@ public class RestController{
      * @param jsonRequest
      * @return StandardJsonResponse
      */
-    @GetMapping("/orderDetails")
+    @GetMapping("/duckService/orderDetails")
     public StandardJsonResponse getQueuePositionAndWaitTime(@RequestBody final StandardRequestBody jsonRequest){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();
         final HashMap<String, Object> responseData = new HashMap<>();
@@ -103,7 +103,7 @@ public class RestController{
      * 
      * @return StandardJsonResponse
      */
-    @GetMapping("/allOrdersDetails")
+    @GetMapping("/duckService/allOrdersDetails")
     public StandardJsonResponse getAllOrdersAndWaitTime(){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();
         final HashMap<String, Object> responseData = new HashMap<>();
@@ -126,7 +126,7 @@ public class RestController{
      * @param jsonRequest
      * @return StandardJsonResponse
      */
-    @GetMapping("/nextOrder")
+    @GetMapping("/duckService/nextOrder")
     public StandardJsonResponse nextDelivery(@RequestBody final StandardRequestBody jsonRequest){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();
         final HashMap<String, Object> responseData = new HashMap<>();
@@ -151,7 +151,7 @@ public class RestController{
      * @param jsonRequest
      * @return
      */
-    @DeleteMapping("/remove")
+    @DeleteMapping("/duckService/remove")
     public StandardJsonResponse deleteOrder(@RequestBody final StandardRequestBody jsonRequest){
         final StandardJsonResponse jsonResponse = new StandardJsonResponseImpl();
         final HashMap<String, Object> responseData = new HashMap<>();
